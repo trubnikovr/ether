@@ -24,7 +24,7 @@ contract MyFirstShop {
         require(
          owner == msg.sender
          && msg.value <= price
-         && !fully  , "Reject");
+         && !fullyPaid  , "Reject");
          if(shopAddress.balance == price) {
             fullyPaid = true;
 
@@ -35,12 +35,12 @@ contract MyFirstShop {
     function getBayer(address _addr) public view returns(bool) {
 
         require(owner == msg.sender, "You are not an owner!");
-        return  buyers[_addr];
+        return buyers[_addr];
     }
 
     function addBayer(address _addr) public {
 
-        require(owner == msg.sender, "You are not an owner!")
+        require(owner == msg.sender, "You are not an owner!");
         buyers[_addr] = true;
     }
 
